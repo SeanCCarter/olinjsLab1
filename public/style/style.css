@@ -39,6 +39,24 @@ body,
 		padding:10px;
 		background:#9c9;
 	}
+	#article {
+		float:right;
+		width:480px;
+		padding:10px;
+		background:#9c9;
+	}
+	#createform {
+		float:right;
+		width:480px;
+		padding:10px;
+		background:#9c9;
+	}
+	#editform {
+		float:right;
+		width:480px;
+		padding:10px;
+		background:#9c9;
+	}
 	h2 {
 		margin:0 0 1em;
 	}
