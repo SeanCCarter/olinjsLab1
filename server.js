@@ -14,6 +14,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Home Page
 app.get('/', index.home);
+
+// GET Requests
+
+
+// POST Requests
+app.post('/newTopic', index.newTopic);
 
 app.listen(3000);
