@@ -53,6 +53,10 @@ body,
 	#footer p {
 		margin:0;
     }
+
+   .btn-right{
+   		float: right;
+   }
 	* html #footer {
 		height:1px;
 	}
