@@ -12,16 +12,12 @@ body,
 		margin:0 auto;
 		background:#99c;
 	}
-	#header {
-    	padding:5px 10px;
-		background:#ddd;
-	}
 	h1 {
 	    margin:0;
     }
 	#nav {
-		padding:5px 10px;
-		background:#c99;
+		padding:0px 10px;
+		background:#9BD7D5;
 	}
 	#nav ul {
 		margin:0;
@@ -32,26 +28,9 @@ body,
 		display:inline;
 		margin:0;
 		padding:0;
+		color: #FFF5C3;
 	}
 	#main {
-		float:right;
-		width:480px;
-		padding:10px;
-		background:#9c9;
-	}
-	#article {
-		float:right;
-		width:480px;
-		padding:10px;
-		background:#9c9;
-	}
-	#createform {
-		float:right;
-		width:480px;
-		padding:10px;
-		background:#9c9;
-	}
-	#editform {
 		float:right;
 		width:480px;
 		padding:10px;
