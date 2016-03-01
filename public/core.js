@@ -37,7 +37,7 @@ CardWiki.controller('addTopicController', function($scope) {
     	$.post("/newTopic", $scope.newarticle)
 	    	.done(function(data, status){
 	    		$rootScope.$broadcast('articleCreated', { article: data});
-	    		window.location.replace("/#/");
+	    		window.location.replace("/#/viewTopic/" + data.id);
 	    	})
 	    	.error(function(err, status){
 	    		console.log(err);
@@ -48,6 +48,7 @@ CardWiki.controller('addTopicController', function($scope) {
 
 CardWiki.controller('viewTopicController', function($scope, $routeParams) {
     $scope.message = 'View a topic page.';
+    $rootScope = $scope.$root
     $.get("/getArticle",{id:$routeParams.id})
     	.done(function(data, status){
     		data.id = data._id;
@@ -62,10 +63,22 @@ CardWiki.controller('viewTopicController', function($scope, $routeParams) {
 	$scope.editTopic = function(topicid){
 		window.location.replace("/#/editTopic/"+topicid)
 	}
+	$scope.deleteTopic = function(topicid){
+		$.post("/deleteTopic", {id:$routeParams.id})
+			.done(function(data, status){
+		    		$rootScope.$broadcast('articleDeleted', {article: $scope.article});
+		    		window.location.replace("/#/");
+		    	})
+		    	.error(function(err, status){
+		    		console.log(err);
+		    		console.log(status);
+		    	})
+	}
 });
 
 CardWiki.controller('editTopicController', function($scope, $routeParams) {
     $scope.message = 'This is an edit topic page.';
+    $rootScope = $scope.$root
     $.get("/getArticle",{id:$routeParams.id})
     	.done(function(data, status){
     		$scope.article = data;
@@ -78,6 +91,7 @@ CardWiki.controller('editTopicController', function($scope, $routeParams) {
     $scope.editArticle = function(){
     	$.post("/editTopic", $scope.article)
 	    	.done(function(data, status){
+	    		$rootScope.$broadcast('articleEdited', { article: $scope.article});
 	    		window.location.replace("/#/viewTopic/"+$routeParams.id);
 	    	})
 	    	.error(function(err, status){
@@ -109,6 +123,23 @@ CardWiki.controller('topicListController', function($scope){
 		delete article._id;
 		delete article.text;
 		$scope.topics.push(article)
+	})
+	$scope.$on('articleEdited', function(event, args) {
+		article = args.article;
+		for (i=0;i<$scope.topics.length;i++){
+			if ($scope.topics[i].id==article._id){
+				$scope.topics[i].name = article.name
+			}
+		}
+	})
+	$scope.$on('articleDeleted', function(even, args){
+		console.log(args.article.id)
+		article = args.article;
+		for (i=0;i<$scope.topics.length;i++){
+			if ($scope.topics[i].id==article.id){
+				$scope.topics.splice(i, 1);
+			}
+		}
 	})
 });
 

@@ -24,5 +24,6 @@ app.get('/getArticle', index.getArticle)
 // POST Requests
 app.post('/newTopic', index.newTopic);
 app.post('/editTopic', index.editTopic);
+app.post('/deleteTopic', index.deleteTopic)
 
 app.listen(3000);
