@@ -33,4 +33,27 @@ routes.newTopic = function(req, res){
 	});
 } 
 
+routes.getTopicList = function(req, res){
+	Wiki.find({}, {"name":1},function(err, docs){
+		if (err){
+			res.status(500).send("Error retrieving topic list.")
+		}
+		else {
+			res.send(docs)
+		}
+	})
+}
+
+routes.getArticle = function(req, res){
+	id = req.query.id;
+	Wiki.findOne({_id:id}, function(err, doc){
+		if (err){
+			res.status(500).send("Error retrieving wiki article")
+		}
+		else {
+			res.send(doc)
+		}
+	})
+}
+
 module.exports = routes;

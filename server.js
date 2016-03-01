@@ -18,7 +18,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', index.home);
 
 // GET Requests
-
+app.get('/getTopicList', index.getTopicList)
+app.get('/getArticle', index.getArticle)
 
 // POST Requests
 app.post('/newTopic', index.newTopic);

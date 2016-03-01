@@ -45,11 +45,11 @@
 		</form>
 	</div>
 	-->
-	<div id="sidebar">
+	<div id="sidebar" ng-controller="topicListController">
 		<h2>Topics</h2>
 		<p>Enjoy the large variety of card games that the world has to offer!</p>
 		<ul>
-			<li ng-repeat="topic in topics">{{article.title}}</li>
+			<li ng-repeat="topic in topics"><a href="#viewTopic/{{topic.id}}">{{topic.name}}</a></li>
 		</ul>
 	</div>
 	<div id="footer">
