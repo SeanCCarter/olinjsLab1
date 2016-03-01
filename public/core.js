@@ -48,7 +48,6 @@ CardWiki.controller('addTopicController', function($scope) {
 
 CardWiki.controller('viewTopicController', function($scope, $routeParams) {
     $scope.message = 'View a topic page.';
-    console.log($routeParams.id)
     $.get("/getArticle",{id:$routeParams.id})
     	.done(function(data, status){
     		data.id = data._id;
@@ -106,8 +105,6 @@ CardWiki.controller('topicListController', function($scope){
     	})
 	$scope.$on('articleCreated', function(event, args) {
 		article = args.article;
-		console.log("Article.")
-		console.log(article)
 		article.id = article._id;
 		delete article._id;
 		delete article.text;
