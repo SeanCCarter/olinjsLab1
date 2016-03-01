@@ -23,5 +23,6 @@ app.get('/getArticle', index.getArticle)
 
 // POST Requests
 app.post('/newTopic', index.newTopic);
+app.post('/editTopic', index.editTopic);
 
 app.listen(3000);

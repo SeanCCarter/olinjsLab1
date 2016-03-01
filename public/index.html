@@ -25,27 +25,6 @@
 	<div id="main">
 		<div ng-view></div>
 	</div>
-	<!--
-	<div id="article" ng-show="shouldShowArticle()">
-		<h2>{{article.title}}</h2><br>
-		{{article.text}}
-	</div>
-	
-	<div id="createform" ng-show="shouldShowCreating()">
-		<form id="article-create-form" class="createForm" ng-submit="createArticle()" novalidate>
-			<input type="text" ng-model="newarticle.name"><br>
-			<textarea rows="25" cols="70" ng-model="newarticle.text">
-			</textarea>
-		</form>
-	</div>
-	<div id="editform" ng-show="shouldShowEditing()">
-		<form id="article-edit-form" class="editForm" ng-submit="submitEdits()" novalidate>
-			<input type="text" ng-model="editingarticle.name"><br>
-			<textarea rows="25" cols="70" ng-model="editingarticle.text">
-			</textarea>
-		</form>
-	</div>
-	-->
 	<div id="sidebar" ng-controller="topicListController">
 		<h2>Topics</h2>
 		<p>Enjoy the large variety of card games that the world has to offer!</p>
@@ -56,7 +35,9 @@
 			<input type="search" class="form-control" placeholder="Search" ng-model="wikiSearch">
 			</div>
 		<ul>
-			<li ng-repeat="topic in topics | filter :wikiSearch"><a href="#viewTopic/{{topic.id}}">{{topic.name}}</a></li>
+			<li ng-repeat="topic in topics | filter :wikiSearch">
+				<a href="#viewTopic/{{topic.id}}">{{topic.name}}</a>
+			</li>
 		</ul>
 	</div>
 	<div id="footer">

@@ -16,6 +16,11 @@ CardWiki.config(function($routeProvider) {
 		.when('/viewTopic/:id', {
 			templateUrl: 'html/view-topic.html',
 			controller: 'viewTopicController'
+		})
+
+		.when('/editTopic/:id',{
+			templateUrl: 'html/edit-topic.html',
+			controller: 'editTopicController'
 		});
 });
 
@@ -31,7 +36,6 @@ CardWiki.controller('addTopicController', function($scope) {
     $scope.createArticle = function(){
     	$.post("/newTopic", $scope.newarticle)
 	    	.done(function(data, status){
-	    		console.log(data)
 	    		$rootScope.$broadcast('articleCreated', { article: data});
 	    		window.location.replace("/#/");
 	    	})
@@ -47,6 +51,8 @@ CardWiki.controller('viewTopicController', function($scope, $routeParams) {
     console.log($routeParams.id)
     $.get("/getArticle",{id:$routeParams.id})
     	.done(function(data, status){
+    		data.id = data._id;
+    		delete data._id;
     		$scope.article = data;
     		$scope.$apply();
     	})
@@ -54,6 +60,32 @@ CardWiki.controller('viewTopicController', function($scope, $routeParams) {
     		console.log(err);
     		console.log(status);
     	})
+	$scope.editTopic = function(topicid){
+		window.location.replace("/#/editTopic/"+topicid)
+	}
+});
+
+CardWiki.controller('editTopicController', function($scope, $routeParams) {
+    $scope.message = 'This is an edit topic page.';
+    $.get("/getArticle",{id:$routeParams.id})
+    	.done(function(data, status){
+    		$scope.article = data;
+    		$scope.$apply();
+    	})
+    	.error(function(err, status){
+    		console.log(err);
+    		console.log(status);
+    	})
+    $scope.editArticle = function(){
+    	$.post("/editTopic", $scope.article)
+	    	.done(function(data, status){
+	    		window.location.replace("/#/viewTopic/"+$routeParams.id);
+	    	})
+	    	.error(function(err, status){
+	    		console.log(err);
+	    		console.log(status);
+	    	})
+    }
 });
 
 CardWiki.controller('topicListController', function($scope){
@@ -78,40 +110,8 @@ CardWiki.controller('topicListController', function($scope){
 		console.log(article)
 		article.id = article._id;
 		delete article._id;
+		delete article.text;
 		$scope.topics.push(article)
 	})
 });
 
-
-// .controller("mainController", function($scope) {
-
-// 	$scope.currentArticle = null;
-// 	$scope.editing = false;
-// 	$scope.creating = false;
-// 	$.get("/articles", {}) //TODO: Update route name
-// 		//Gets all the articles from the database
-// 		//Won't work if they get too bit, but neither would
-// 		//our ideas for displaying it
-// 		.done(function(data, status){
-// 			$scope.articles = data;
-// 			$scope.$apply(); //Refresh the side collumn
-// 		})
-// 		.error(function(err, status){
-// 			console.log(err)
-// 			console.log(status)
-// 		});
-
-// 	$scope.shouldShowHomepage = function(){
-// 		if ($scope.currentArticle===null){return true}
-// 	}
-
-// 	$scope.shouldShowArticle = function(){
-// 		if ($scope.currentArticle!==null){return true}
-// 	}
-// 	$scope.shouldShowEditing = function(){
-// 		if ($scope.editing===true){return true}
-// 	}
-// 	$scope.shouldShowCreating = function(){
-// 		if ($scope.creating===true){return true}
-// 	}
-// })

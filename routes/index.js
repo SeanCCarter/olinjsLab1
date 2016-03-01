@@ -33,6 +33,26 @@ routes.newTopic = function(req, res){
 	});
 } 
 
+routes.editTopic = function(req, res){
+	console.log("Editing an article")
+	console.log(req.body)
+	var newText = req.body.text;
+	var newName = req.body.name;
+	var newImgurl = req.body.imgurl;
+	Wiki.update({_id:req.body._id}, {text:newText, name:newName, imgurl:newImgurl}, function(err, doc){
+		if (err){
+			console.log("Editing error.")
+			console.log(err)
+			res.status(500).send("Error saving edits.")
+		}
+		else {
+			console.log("Here's the 'doc' value.")
+			console.log(doc)
+			res.send()
+		}
+	})
+}
+
 routes.getTopicList = function(req, res){
 	Wiki.find({}, {"name":1},function(err, docs){
 		if (err){
