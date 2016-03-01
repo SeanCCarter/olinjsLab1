@@ -16,11 +16,15 @@
 </head>
 <body ng-controller="mainController">
 <div id="wrap">
-	<div id="header"><h1>Simple 2 column CSS layout, final layout</h1></div>
+	<div class="jumbotron text-center">
+        <h1>Card Wiki</h1>
+    </div>
+
 	<div id="nav">
-		<a href="#">Home</a>
-		<a href="#newTopic">New</a>
-		<a href="#viewTopic">View</a>		
+		<ul class="nav nav-pills">
+		  <li role="presentation"><a href="#">Home</a></li>
+		  <li role="presentation"><a href="#newTopic">Add New</a></li>
+		</ul>
 	</div>
 	<div id="main">
 		<div ng-view></div>

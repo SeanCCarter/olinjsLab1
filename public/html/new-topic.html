@@ -1,8 +1,21 @@
 <div id="createform">
-	<form id="article-create-form" class="createForm" ng-submit="createArticle()" novalidate>
+
+	<form id="article-create-form" class="createForm" ng-submit="createArticle()">
+	  <div class="form-group">
+	    <label for="InputTitle">Title</label>
+	    <input type="text" class="form-control" id="InputTitle"  ng-model="newarticle.name" placeholder="Title">
+	  </div>
+	  <div class="form-group">
+	    <label for="InputText">Text</label>
+	    <textarea class="form-control" rows="3" ng-model="newarticle.content" placeholder="Enter Text Here"></textarea>
+	  </div>
+	  <button type="submit" class="btn btn-default">Submit</button>
+	</form>
+
+	<!-- <form id="article-create-form" class="createForm" ng-submit="createArticle()" novalidate>
 		<input type="text" ng-model="newarticle.name"><br>
 		<textarea rows="25" cols="55" ng-model="newarticle.content">
 		</textarea>
 		<button type="submit" value="Create">
-	</form>
+	</form> -->
 </div>
