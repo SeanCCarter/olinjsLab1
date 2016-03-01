@@ -11,6 +11,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
 	<script src="http://code.angularjs.org/1.2.0-rc.2/angular-route.min.js"></script>
     <!-- load angular routes -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
     <script src="core.js"></script>
 </head>
 <body ng-controller="mainController">
@@ -48,8 +49,14 @@
 	<div id="sidebar" ng-controller="topicListController">
 		<h2>Topics</h2>
 		<p>Enjoy the large variety of card games that the world has to offer!</p>
+		<div class="input-group">
+			<span class="input-group-btn">
+			<button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
+			</span>
+			<input type="search" class="form-control" placeholder="Search" ng-model="wikiSearch">
+			</div>
 		<ul>
-			<li ng-repeat="topic in topics"><a href="#viewTopic/{{topic.id}}">{{topic.name}}</a></li>
+			<li ng-repeat="topic in topics | filter :wikiSearch"><a href="#viewTopic/{{topic.id}}">{{topic.name}}</a></li>
 		</ul>
 	</div>
 	<div id="footer">
