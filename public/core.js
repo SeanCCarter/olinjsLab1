@@ -8,12 +8,12 @@ CardWiki.config(function($routeProvider) {
 			controller: 'mainController'
 		})
 
-		.when('/newTopic', {
+		.when('/anewTopic', {
 			templateUrl: 'html/new-topic.html',
 			controller: 'addTopicController'
 		})
 
-		.when('/viewTopic', {
+		.when('/viewTopic/:id', {
 			templateUrl: 'html/view-topic.html',
 			controller: 'viewTopicController'
 		});
@@ -26,10 +26,29 @@ CardWiki.controller('mainController', function($scope) {
 
 CardWiki.controller('addTopicController', function($scope) {
     $scope.message = 'This is an add topic page.';
+    $scope.newarticle = {name:"", imgurl:"", content:""};
+    $scope.createArticle = function(){
+    	$.post("/newTopic", $scope.newarticle)
+	    	.done(function(data, status){
+	    		window.location.replace("/#/");
+	    	})
+	    	.error(function(err, status){
+	    		console.log(err);
+	    		console.log(status);
+	    	})
+    }
 });
 
 CardWiki.controller('viewTopicController', function($scope) {
     $scope.message = 'View a topic page.';
+    $.get("/getArticle",{id:$routeProvider.id})
+    	.done(function(data, status){
+    		$scope.article = data;
+    	})
+    	.error(function(err, status){
+    		console.log(err);
+    		console.log(status);
+    	})
 });
 
 

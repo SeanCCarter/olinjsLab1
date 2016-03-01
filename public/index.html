@@ -24,11 +24,12 @@
 	<div id="main">
 		<div ng-view></div>
 	</div>
+	<!--
 	<div id="article" ng-show="shouldShowArticle()">
 		<h2>{{article.title}}</h2><br>
 		{{article.text}}
 	</div>
-	<!--
+	
 	<div id="createform" ng-show="shouldShowCreating()">
 		<form id="article-create-form" class="createForm" ng-submit="createArticle()" novalidate>
 			<input type="text" ng-model="newarticle.name"><br>
@@ -43,14 +44,14 @@
 			</textarea>
 		</form>
 	</div>
+	-->
 	<div id="sidebar">
 		<h2>Topics</h2>
 		<p>Enjoy the large variety of card games that the world has to offer!</p>
 		<ul>
-			<li ng-repeat="article in articles">{{article.title}}</li>
+			<li ng-repeat="topic in topics">{{article.title}}</li>
 		</ul>
 	</div>
-	-->
 	<div id="footer">
 		<p>Footer</p>
 	</div>

@@ -1,5 +1,8 @@
-<div>
-    <h1>New Topic Page</h1>
-
-    <p>{{ message }}</p>
+<div id="createform">
+	<form id="article-create-form" class="createForm" ng-submit="createArticle()" novalidate>
+		<input type="text" ng-model="newarticle.name"><br>
+		<textarea rows="25" cols="55" ng-model="newarticle.text">
+		</textarea>
+		<button type="submit" value="Create">
+	</form>
 </div>
