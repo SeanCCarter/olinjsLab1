@@ -34,6 +34,7 @@ routes.newTopic = function(req, res){
 } 
 
 routes.editTopic = function(req, res){
+	// Get the edits and update the databse
 	var newText = req.body.text;
 	var newName = req.body.name;
 	var newImgurl = req.body.imgurl;
@@ -48,6 +49,7 @@ routes.editTopic = function(req, res){
 }
 
 routes.deleteTopic = function(req, res){
+	// Delete topic using id
 	Wiki.remove({_id:req.body.id}, function(err){
 		if(err){
 			res.status(500).send("Error deleting topic.")
@@ -59,6 +61,7 @@ routes.deleteTopic = function(req, res){
 }
 
 routes.getTopicList = function(req, res){
+	// find all topics in DBase
 	Wiki.find({}, {"name":1},function(err, docs){
 		if (err){
 			res.status(500).send("Error retrieving topic list.")
@@ -70,6 +73,7 @@ routes.getTopicList = function(req, res){
 }
 
 routes.getArticle = function(req, res){
+	// find the article and its details using id
 	id = req.query.id;
 	Wiki.findOne({_id:id}, function(err, doc){
 		if (err){
