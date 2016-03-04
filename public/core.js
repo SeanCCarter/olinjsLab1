@@ -26,7 +26,7 @@ CardWiki.config(function($routeProvider) {
 
 CardWiki.controller('mainController', function($scope) {
     // create a message to display in our view
-    $scope.message = 'Welcome to this website';
+    $scope.message = 'Explore this website of card games!';
 });
 
 CardWiki.controller('addTopicController', function($scope) {

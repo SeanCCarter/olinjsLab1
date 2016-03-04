@@ -38,14 +38,14 @@
 			</span>
 			<input type="search" class="form-control" placeholder="Search" ng-model="wikiSearch">
 			</div>
-		<ul>
+		<ul class="list-unstyled">
 			<li ng-repeat="topic in topics | filter :wikiSearch">
 				<a href="#viewTopic/{{topic.id}}">{{topic.name}}</a>
 			</li>
 		</ul>
 	</div>
 	<div id="footer">
-		<p>Footer</p>
+		<center><p>An OlinJS product by Sean Carter and Shruti Iyer</p></center>
 	</div>
 </div>
 </body>

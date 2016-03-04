@@ -1,3 +1,7 @@
+<!-- The div injection for the view topic.
+The page displays the title and the article.
+It also features an edit and delete button. -->
+
 <div id="article">
 	<h2>{{article.name}}<button type="button" class="btn btn-default btn-right" ng-click="deleteTopic()">Delete</button><button type="button" class="btn btn-default btn-right" ng-click="editTopic(article.id)">Edit</button></h2><br>
 	{{article.text}}<br>

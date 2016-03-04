@@ -1,23 +1,28 @@
-/*All the styling*/
+/* All the styling
+ * This web app uses both css and Bootstrap
+ */
 
 body,
 	html {
 		margin:0;
 		padding:0;
 		color:#000;
-		background:#a7a09a;
+		background: #FFF5C3;
 	}
 	#wrap {
 		width:750px;
 		margin:0 auto;
-		background:#99c;
+		background:#8cd7ca;
 	}
 	h1 {
 	    margin:0;
     }
+    .glyphicon {
+    font-size: 20px;
+	}
 	#nav {
 		padding:0px 10px;
-		background:#9BD7D5;
+		background: #FFF5C3;
 	}
 	#nav ul {
 		margin:0;
@@ -34,7 +39,7 @@ body,
 		float:right;
 		width:480px;
 		padding:10px;
-		background:#9c9;
+		background:#8cd7ca;
 	}
 	h2 {
 		margin:0 0 1em;
@@ -42,15 +47,25 @@ body,
 	#sidebar {
 		float:left;
 		width:230px;
+		margin-left: 10px;
 		padding:10px;
-		background:#99c;
+		background:#8cd7ca;
+	}
+	#sidebar ul {
+		margin-left: 30px;
+	}
+	#sidebar li {
+		margin:10;
+		padding:0;
+		color: #FFF5C3;
 	}
 	#footer {
 		clear:both;
 		padding:5px 10px;
-		background:#cc9;
+		background:#2f5653;
 	}
 	#footer p {
+		color: #fff;
 		margin:0;
     }
 
