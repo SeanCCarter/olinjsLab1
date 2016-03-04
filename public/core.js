@@ -1,4 +1,8 @@
-// Angular stuff goes here
+/* Angular stuff goes here
+ * The file contains route provider and controllers
+ */
+
+
 var CardWiki = angular.module('CardWiki', ['ngRoute']);
 
 CardWiki.config(function($routeProvider) {
