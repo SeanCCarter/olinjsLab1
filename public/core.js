@@ -2,6 +2,8 @@
 var CardWiki = angular.module('CardWiki', ['ngRoute']);
 
 CardWiki.config(function($routeProvider) {
+	//Changes what will be displayed in the main box
+	//of the website
 	$routeProvider
 		.when('/', {
 			templateUrl: 'html/home.html',
@@ -30,12 +32,14 @@ CardWiki.controller('mainController', function($scope) {
 });
 
 CardWiki.controller('addTopicController', function($scope) {
+	//Handles creation of new Wiki articles
     $scope.message = 'This is an add topic page.';
     $rootScope = $scope.$root
     $scope.newarticle = {name:"", imgurl:"", content:""};
     $scope.createArticle = function(){
     	$.post("/newTopic", $scope.newarticle)
 	    	.done(function(data, status){
+	    		//Tells the Topics sidebar that something was created
 	    		$rootScope.$broadcast('articleCreated', { article: data});
 	    		window.location.replace("/#/viewTopic/" + data.id);
 	    	})
@@ -66,6 +70,7 @@ CardWiki.controller('viewTopicController', function($scope, $routeParams) {
 	$scope.deleteTopic = function(topicid){
 		$.post("/deleteTopic", {id:$routeParams.id})
 			.done(function(data, status){
+				//Tells the Topics sidebar that something was deleted
 		    		$rootScope.$broadcast('articleDeleted', {article: $scope.article});
 		    		window.location.replace("/#/");
 		    	})
@@ -80,6 +85,7 @@ CardWiki.controller('editTopicController', function($scope, $routeParams) {
     $scope.message = 'This is an edit topic page.';
     $rootScope = $scope.$root
     $.get("/getArticle",{id:$routeParams.id})
+    	//Gets the article that will need to be edited
     	.done(function(data, status){
     		$scope.article = data;
     		$scope.$apply();
@@ -91,6 +97,7 @@ CardWiki.controller('editTopicController', function($scope, $routeParams) {
     $scope.editArticle = function(){
     	$.post("/editTopic", $scope.article)
 	    	.done(function(data, status){
+	    		//Tells the Topics sidebar that something was edited
 	    		$rootScope.$broadcast('articleEdited', { article: $scope.article});
 	    		window.location.replace("/#/viewTopic/"+$routeParams.id);
 	    	})
@@ -117,6 +124,8 @@ CardWiki.controller('topicListController', function($scope){
     		console.log(err);
     		console.log(status);
     	})
+    //Article creation, editing, and deletion can all change
+    //The names that need to be displayed on the sidebar
 	$scope.$on('articleCreated', function(event, args) {
 		article = args.article;
 		article.id = article._id;

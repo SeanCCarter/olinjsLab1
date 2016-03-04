@@ -1,3 +1,5 @@
+//Contains the code for every route connected
+//to the server
 var express = require('express');
 var path = require('path');
 var Wiki = require(path.join(__dirname,'../models/wikiModel'));
@@ -10,6 +12,8 @@ routes.home = function(req, res){
 
 
 routes.newTopic = function(req, res){
+	//for submiting a new wiki article to
+	//the database
 
 	// Get data from the JSON req
 	var wikiTitle = req.body.name;
@@ -34,6 +38,7 @@ routes.newTopic = function(req, res){
 } 
 
 routes.editTopic = function(req, res){
+	//Edit a wiki article
 	var newText = req.body.text;
 	var newName = req.body.name;
 	var newImgurl = req.body.imgurl;
@@ -48,6 +53,7 @@ routes.editTopic = function(req, res){
 }
 
 routes.deleteTopic = function(req, res){
+	//Delete a wiki article
 	Wiki.remove({_id:req.body.id}, function(err){
 		if(err){
 			res.status(500).send("Error deleting topic.")
@@ -59,6 +65,9 @@ routes.deleteTopic = function(req, res){
 }
 
 routes.getTopicList = function(req, res){
+	//Returns a list of all wiki article names
+	//to be displayed on the website sidebar
+	//Mongoose alows you to only get some parameters
 	Wiki.find({}, {"name":1},function(err, docs){
 		if (err){
 			res.status(500).send("Error retrieving topic list.")
@@ -70,6 +79,8 @@ routes.getTopicList = function(req, res){
 }
 
 routes.getArticle = function(req, res){
+	//Returns the document from the database for
+	//an article
 	id = req.query.id;
 	Wiki.findOne({_id:id}, function(err, doc){
 		if (err){
