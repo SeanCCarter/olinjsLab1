@@ -35,7 +35,7 @@ routes.newTopic = function(req, res){
 			res.json(article);
 		}
 	});
-} 
+}
 
 routes.editTopic = function(req, res){
 	// Get the edits and update the databse
@@ -78,7 +78,7 @@ routes.getTopicList = function(req, res){
 	})
 }
 
-routes.getArticle = function(req, res){
+routes.getArticle = function(req, res){ // is an article a topic? naming inconsistency?
 	// find the article and its details using id
 	id = req.query.id;
 	Wiki.findOne({_id:id}, function(err, doc){

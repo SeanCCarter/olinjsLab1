@@ -6,6 +6,7 @@
   "author": "Sean Carter, Shruti Iyer",
   "dependencies": {
     "body-parser": "~1.5.2",
+    "bson": "^0.4.23",
     "express": "~4.7.2",
     "method-override": "~2.1.2",
     "mongoose": "^3.6.20",
