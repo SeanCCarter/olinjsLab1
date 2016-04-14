@@ -26,4 +26,6 @@ app.post('/newTopic', index.newTopic);
 app.post('/editTopic', index.editTopic);
 app.post('/deleteTopic', index.deleteTopic)
 
+//with angular apps it is common to have the page sent on * instead of /
+
 app.listen(3000);

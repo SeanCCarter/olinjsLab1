@@ -19,7 +19,7 @@ CardWiki.config(function($routeProvider) {
 			controller: 'addTopicController'
 		})
 
-		.when('/viewTopic/:id', {
+		.when('/viewTopic/:id', { // ID might not be the best url search. hard for user to access it directly
 			templateUrl: 'html/view-topic.html',
 			controller: 'viewTopicController'
 		})
